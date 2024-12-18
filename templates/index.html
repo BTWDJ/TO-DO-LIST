@@ -10,13 +10,19 @@
     <div class="container">
         <h1 class="heading">My To-Do List</h1>
         <div class="todo-input">
-            <input type="text" id="taskInput" placeholder="Add a new task...">
-            <button onclick="addTask()">Add Task</button>
+            <input type="text" id="taskInput" placeholder="Add a new task..." required>
+            <button id="addTaskBtn" onclick="addTask()">Add Task</button>
         </div>
-        <ul id="taskList"></ul>
+        <ul id="taskList">
+            {% for task in tasks %}
+                <li id="task-{{ task[0] }}">
+                    <span>{{ task[1] }}</span>
+                    <button class="delete-btn" onclick="deleteTask({{ task[0] }})">Delete</button>
+                </li>
+            {% endfor %}
+        </ul>
     </div>
 
-    <!-- Footer -->
     <footer>
         <p>Designed with ❤️ by DJ</p>
     </footer>
